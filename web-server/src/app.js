@@ -42,9 +42,31 @@ app.get('/help', (req,res)=>{
 })
 
 app.get('/weather',(req,res)=>{
+
+    if(!req.query.search) {
+        res.send({
+            error: 'you must provide a search term'
+        })
+    } else {
+        res.send({
+            forecast: "rainy",
+            location: "Kiambu",
+            address: req.query.search
+        })
+    }
+})
+
+app.get('/products',(req,res)=>{
+    if(!req.query.search) {
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+
+
+    console.log(req.query.search);
     res.send({
-        forecast: "rainy",
-        location: "Kiambu"
+        products: []
     })
 })
 
