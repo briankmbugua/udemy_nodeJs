@@ -3,10 +3,10 @@ const request = require('request')
 let geocode = (place, callback) => {
     const url = `http://api.positionstack.com/v1/forward?access_key=6c978c64147dc9f6c2b90c117f647f3c&query=${place}`
 
-    request({url,json: true}, (error, {body}) => {
+    request({url,json: true}, (error, {body}={}) => {
         if (error) {
             callback('unable to connect to location services', undefined)
-        } else if (body.data.length === 0) {
+        } else if (body.error) {
             callback('unable to find location', undefined)
         } else {
             // let lat = response.body.data[0].latitude
