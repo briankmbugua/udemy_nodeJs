@@ -1,21 +1,14 @@
-const add = (a,b,callback)=>{
+const doMorCallback = (callback) => {
     setTimeout(()=>{
-        callback(a+b)
-    },2000)
-}
-
-add(1,4,(sum)=>{
-    console.log(sum);
-})
-
-
-
-
-const fullName = (first,second,callback) =>{
-    callback(first+second)
+        callback(undefined, [1, 4, 7])
+    }, 2000)
 }
 
 
-fullName('brian','mbugua',(sum)=>{
-    console.log(sum);
+doMorCallback((error, result)=>{
+    if(error) {
+        return console.log(error);
+    }
+
+    console.log(result);
 })
