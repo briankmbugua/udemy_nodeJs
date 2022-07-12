@@ -2,15 +2,18 @@
 
 // const mongoClient = mongodb.MongoClient
 
-const {MongoClient, ObjectId} = require('mongodb')
+const {
+    MongoClient,
+    ObjectId
+} = require('mongodb')
 
 const connectionURL = "mongodb://localhost:27017"
 
 const databaseName = "task-manager"
 
 
-MongoClient.connect(connectionURL,(error, client)=>{
-    if(error) {
+MongoClient.connect(connectionURL, (error, client) => {
+    if (error) {
         return console.log('Unable to connect to database');
     }
 
@@ -32,20 +35,27 @@ MongoClient.connect(connectionURL,(error, client)=>{
     //     console.log(count);
     // })
 
-    db.collection('tasks').findOne({_id: new ObjectId("62cb306e97320ba70a7ac7ec")},(error,task) =>{
-        if(error) {
-            return console.log('unable to find task');
-        }
+    // db.collection('tasks').findOne({_id: new ObjectId("62cb306e97320ba70a7ac7ec")},(error,task) =>{
+    //     if(error) {
+    //         return console.log('unable to find task');
+    //     }
 
-        console.log(task);
+    //     console.log(task);
+    // })
+
+    // db.collection('tasks').find({completed: true}).toArray((error,tasks)=>{
+    //     if(error) {
+    //         return console.log('no tasks found')
+    //     }
+    //     console.log(tasks);
+    // })
+
+    db.collection('tasks').deleteOne({
+        description: 'finish css'
+    }).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
     })
-
-    db.collection('tasks').find({completed: true}).toArray((error,tasks)=>{
-        if(error) {
-            return console.log('no tasks found')
-        }
-        console.log(tasks);
-    })
-
 
 })
