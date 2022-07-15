@@ -69,7 +69,7 @@ const Task = mongoose.model('Task', {
 
 
 const task = new Task({
-    description: 'finish backend development'
+    description: 'finish nodejs'
 })
 
 task.save().then(()=>{
