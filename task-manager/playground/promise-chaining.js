@@ -1,6 +1,5 @@
 require('../src/db/mongoose')
 const User = require('../src/models/user')
-
 // // 62d00ed947e0e339eba45168
 
 
