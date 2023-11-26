@@ -85,5 +85,4 @@ module.exports = {
     removeNotes: removeNotes,
     listNotes: listNotes,
     readNote: readNote
-
 }
